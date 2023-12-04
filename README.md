@@ -1,4 +1,1 @@
-# go-dev-env
-
-Simple Go HTTP Server Template
-
+# go-amicable-api
