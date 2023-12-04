@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    image: golang:latest
+    container_name: go-dev
+    volumes:
+      - /home/opc/work/go-dev-env/app:/go/src/app
+    ports:
+      - "8080:8080"
+    command: go run /go/src/app/main.go
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    depends_on:
+      - app
+    volumes:
+      - /home/opc/work/go-dev-env/logs:/var/log/nginx
+      - /home/opc/work/go-dev-env/nginx:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+      - "443:443"
+
