@@ -1,3 +1,6 @@
+ARG POSTGRES_DB
+ARG POSTGRES_USER
+ARG POSTGRES_PASSWORD
 # Use an official Go runtime as a parent image
 FROM golang:latest
 
@@ -8,7 +11,9 @@ WORKDIR /app
 COPY ./app /app
 COPY .env /app/.env
 
-# TODO. replace schema.sql env variables
+ENV POSTGRES_DB=$POSTGRES_DB
+ENV POSTGRES_USER=$POSTGRES_USER
+ENV POSTGRES_PASSWORD=$POSTGRES_PASSWORD
 
 # Install any dependencies you might need
 # For example, if you need PostgreSQL client tools
